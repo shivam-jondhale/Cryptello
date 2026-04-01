@@ -1,0 +1,35 @@
+# Environments
+.env
+.env.*
+
+# Maven
+target/
+*.class
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Logs, outputs, and temporary files
+*.log
+*.txt
+*.json
+*.ps1
+app_run*.log
+build_*.txt
+compile*.log
+test*.log
+test*.txt
+auth_test_output.txt
+curl_output.txt
+manual_commands.txt
+package_output.txt
+specific_tests*.log
+unit_test_failure.log
+
+# Other
+ uploads/
+ dir/
