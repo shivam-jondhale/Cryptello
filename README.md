@@ -1,35 +1,50 @@
 # Cryptello Backend
 
-Welcome to the backend repository for **Cryptello**, a modern crypto trading platform.
+Welcome to the backend repository for **Cryptello**, a comprehensive and modern crypto trading platform.
+
+## What is Cryptello?
+Cryptello is an advanced cryptocurrency trading application designed to connect everyday users with experienced "pro" traders. The platform allows users to:
+- **Track Cryptocurrencies**: Get real-time data, price feeds, and tracking for various crypto assets.
+- **Trade and Invest**: Seamlessly manage wallets, process transactions, and oversee portfolio growth.
+- **Follow Traders (Signals)**: Engage in social trading by following expert traders, viewing their trade signals, and subscribing to their premium feeds for exclusive insights.
+- **Secure Transactions**: Process secure payments using integrated providers (Cashfree, Stripe, Razorpay) for wallet deposits, withdrawals, and subscription fees.
+- **Intelligent Assistant**: Interact with an AI-powered chatbot to get quick market insights, platform help, and crypto updates.
+
+This repository houses the robust Spring Boot REST API that powers all these features, providing a secure, stateless, and highly available engine for frontend clients.
 
 ## Tech Stack
 - **Framework**: Spring Boot 3+ (Java 17/21)
 - **Database**: MySQL
-- **Authentication**: JWT (Stateless)
-- **Frontend**: React (Separate Repo)
+- **Authentication**: JWT (Stateless OAuth2 + Email/Password)
+- **Frontend**: React (Separate Repository)
 - **Payments**: Cashfree (Primary), Stripe/Razorpay (Legacy/Backup)
+- **External APIs**: CoinGecko, CoinMarketCap, Gemini (AI Chatbot)
 
 ## Project Structure
-The project follows a domain-driven package structure:
-- `com.cryptonex.auth` - Login, Signup, JWT handling
-- `com.cryptonex.security` - Security configurations, Filters
-- `com.cryptonex.user` - User profiles, Settings
-- `com.cryptonex.trader` - Trader verification, Upgrades
-- `com.cryptonex.payment` - Orders, Webhooks, Providers
-- `com.cryptonex.feed` - Social feed (Posts, Signals)
-- `com.cryptonex.common` - Shared utilities, Exceptions
+The project follows a domain-driven architectural package structure:
+- `com.cryptonex.auth` - Login, Signup, JWT provision, and 2FA handling
+- `com.cryptonex.security` - Advanced Security configurations, Rate Limiting, CORS Filters
+- `com.cryptonex.user` - User profiles, Watchlists, Settings
+- `com.cryptonex.trader` - Trader verification and account upgrades
+- `com.cryptonex.payment` - Payment Orders, Webhooks, Wallet Transactions
+- `com.cryptonex.feed` - Social feed, Posts, and Trade Signals
+- `com.cryptonex.common` - Shared utilities and global exception handlers
 
 ## Configuration
-The application uses profile-based configuration:
-- `application-dev.properties`: For local development (H2/Local MySQL, React localhost).
-- `application-prod.properties`: For production deployment (Env vars for secrets).
+The application gracefully uses role-based and profile-based configurations:
+- `application-dev.properties`: For local development (Local Database).
+- `application-prod.properties`: For production deployment (Env vars for API secrets and production databases).
 
-**Note**: Secrets (DB passwords, API keys) are **NOT** committed. They are loaded via Environment Variables.
+**Note:** All sensitive credentials (DB passwords, API keys) are **NOT** committed to this repository. They are dynamically loaded via Environment Variables during startup for strict security.
 
-## Security
-See [SECURITY-MINIMUM.md](SECURITY-MINIMUM.md) for the security baseline.
+## Security Overview
+- Stateless JWT authentication is used across the system.
+- Includes rate-limiting (to prevent DoS) and account lockout policies for brute-force attack prevention.
+- Please refer to [SECURITY-MINIMUM.md](SECURITY-MINIMUM.md) for the complete security baseline.
 
 ## Running Locally
+
+To run the application locally on your machine, simply execute:
 ```bash
 # Run with Dev profile
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
