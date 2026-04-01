@@ -22,13 +22,13 @@ This repository houses the robust Spring Boot REST API that powers all these fea
 
 ## Project Structure
 The project follows a domain-driven architectural package structure:
-- `com.cryptonex.auth` - Login, Signup, JWT provision, and 2FA handling
-- `com.cryptonex.security` - Advanced Security configurations, Rate Limiting, CORS Filters
-- `com.cryptonex.user` - User profiles, Watchlists, Settings
-- `com.cryptonex.trader` - Trader verification and account upgrades
-- `com.cryptonex.payment` - Payment Orders, Webhooks, Wallet Transactions
-- `com.cryptonex.feed` - Social feed, Posts, and Trade Signals
-- `com.cryptonex.common` - Shared utilities and global exception handlers
+- `com.cryptello.auth` - Login, Signup, JWT provision, and 2FA handling
+- `com.cryptello.security` - Advanced Security configurations, Rate Limiting, CORS Filters
+- `com.cryptello.user` - User profiles, Watchlists, Settings
+- `com.cryptello.trader` - Trader verification and account upgrades
+- `com.cryptello.payment` - Payment Orders, Webhooks, Wallet Transactions
+- `com.cryptello.feed` - Social feed, Posts, and Trade Signals
+- `com.cryptello.common` - Shared utilities and global exception handlers
 
 ## Configuration
 The application gracefully uses role-based and profile-based configurations:
